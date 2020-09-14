@@ -1,9 +1,8 @@
 <?php
 
-class RSSFeedTrigger {
+class RSSTrigger {
 
-    // private $oldFileName = "";
-    // private $newFileName = "";
+
     private $filePrefix = "";
     private $feedUrl = "";
     private const CACHE_DIR = __DIR__ . DIRECTORY_SEPARATOR . "cache" . DIRECTORY_SEPARATOR;
