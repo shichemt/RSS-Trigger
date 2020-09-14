@@ -29,19 +29,24 @@ class RSSFeedTrigger {
     }
 
 
-    private function fetchFeed($func_name) {
+    /**
+     * Saves the new xml file to local drive, and return the value of the user-defined function.
+     * @param string $xpath: Path of the xml need to be parsed. example /a/b/c
+     * @param function func_name: user-predefined-function that needs to be executed on the new elements.
+     * @return mixed: Return value of func_name
+     */
+    public function fetchFeed($xpath, $func_name) {
         $feed = file_get_contents($this->feedUrl);
         if($feed === FALSE) {
             throw("Error: Cannot fetch the url");
         } else {
-            
-
-
-
+            $newElements = $this->getNewUniqueElements($feed, $xpath);
 
             if (file_put_contents(CACHE_DIR . $filePrefix . date("YmdHis"), $feed) === FALSE) {
                 throw("Error: Cannot save file.");
             } 
+
+            return $func_name($newElements);
         }
     }
 
