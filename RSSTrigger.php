@@ -62,6 +62,7 @@ class RSSTrigger {
      * 
      * @param string $newFeed: Loads content from file_get_contents 
      * @param string $xpath: Path of the xml need to be parsed. example /a/b/c
+     * @param function func_name: user-predefined-function that compares values to be extracted.
      * @return array of strings: New unique elements.
      */
     private function getNewUniqueElements($newFeed, $xpath, $func_name) {
